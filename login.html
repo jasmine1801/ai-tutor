@@ -76,6 +76,27 @@ transition:.3s;
 background:#4F46E5;
 transform:translateY(-2px);
 }
+
+.google-btn{
+width:100%;
+padding:15px;
+background:white;
+border:1px solid #ddd;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+font-weight:600;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+transition:.3s;
+}
+
+.google-btn:hover{
+background:#f5f5f5;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
 </style>
 
 </head>
@@ -106,13 +127,29 @@ Login
 
 </form>
 
+<div class="google-login">
+
+<p style="margin:20px 0;color:#666;">──────── OR ────────</p>
+
+<button type="button" id="googleLogin" class="google-btn">
+
+<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+
+<span>Continue with Google</span>
+
+</button>
+
+</div>
+
 </div>
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 import {
 getAuth,
-signInWithEmailAndPassword
+signInWithEmailAndPassword,
+GoogleAuthProvider,
+signInWithPopup
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -138,6 +175,23 @@ try {
 await signInWithEmailAndPassword(auth, email, password);
 
 alert("Login Successful!");
+
+window.location.href = "index.html";
+
+} catch (error) {
+
+alert(error.message);
+
+}
+
+});
+const provider = new GoogleAuthProvider();
+
+document.getElementById("googleLogin").addEventListener("click", async () => {
+
+try {
+
+await signInWithPopup(auth, provider);
 
 window.location.href = "index.html";
 
