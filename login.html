@@ -24,7 +24,58 @@ justify-content:center;
 align-items:center;
 background:linear-gradient(135deg,#EEF2FF,#F8FAFF);
 }
+.login-container{
+background:white;
+padding:40px;
+width:380px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.1);
+text-align:center;
+}
 
+.login-container h1{
+color:#6366F1;
+margin-bottom:10px;
+}
+
+.login-container p{
+color:#666;
+margin-bottom:30px;
+}
+
+.login-container input{
+width:100%;
+padding:15px;
+margin-bottom:20px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+outline:none;
+transition:.3s;
+}
+
+.login-container input:focus{
+border-color:#6366F1;
+box-shadow:0 0 8px rgba(99,102,241,.2);
+}
+
+.login-container button{
+width:100%;
+padding:15px;
+background:#6366F1;
+color:white;
+border:none;
+border-radius:10px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.login-container button:hover{
+background:#4F46E5;
+transform:translateY(-2px);
+}
 </style>
 
 </head>
@@ -35,7 +86,7 @@ background:linear-gradient(135deg,#EEF2FF,#F8FAFF);
 <h1>AI Tutor</h1>
 <p>Login to continue your learning journey</p>
 
-<form>
+<form id="loginForm">
 
 <input
 type="email"
