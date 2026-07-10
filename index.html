@@ -322,7 +322,7 @@ transform:translateX(0);
 
 <nav>
 <div class="logo">AI Tutor</div>
-<ul>
+<ul id="navMenu">
 
 <li>
 <button class="login-btn"
@@ -338,9 +338,17 @@ Register
 </button>
 </li>
 
-
-
 </ul>
+
+<div id="userInfo" style="display:none;align-items:center;gap:10px;">
+
+<img id="userPhoto"
+style="width:45px;height:45px;border-radius:50%;border:2px solid #6366F1;">
+
+<span id="userName"
+style="font-weight:600;font-size:17px;"></span>
+
+</div>
 
 </nav>
 
@@ -483,6 +491,44 @@ chatBox.scrollTop=chatBox.scrollHeight;
 </script>
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="XP2ROR5WCX5FUp428HV-n";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+</script>
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+
+import {
+getAuth,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBGtZ5NiFTcMjH2bxTOtkQcJeES28YZdz4",
+  authDomain: "ai-tutor-912b0.firebaseapp.com",
+  projectId: "ai-tutor-912b0",
+  storageBucket: "ai-tutor-912b0.firebasestorage.app",
+  messagingSenderId: "899835368939",
+  appId: "1:899835368939:web:13f4e203266e2aba4ff5ae"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+
+if(user){
+
+document.getElementById("userInfo").style.display="flex";
+
+document.getElementById("userName").innerText=user.displayName;
+
+document.getElementById("userPhoto").src=user.photoURL;
+
+document.getElementById("navMenu").style.display="none";
+
+}
+
+});
+
 </script>
 </body> 
 
