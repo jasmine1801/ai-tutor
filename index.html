@@ -339,7 +339,7 @@ Register
 </li>
 
 </ul>
-<div id="userInfo" style="display:none;align-items:center;gap:12px;">
+<div id="userInfo" style="display:none;display:flex;align-items:center;gap:12px;flex-wrap:nowrap;">
 
 <img id="userPhoto"
 style="width:45px;height:45px;border-radius:50%;border:2px solid #6366F1;">
@@ -347,7 +347,18 @@ style="width:45px;height:45px;border-radius:50%;border:2px solid #6366F1;">
 <span id="userName"
 style="font-weight:600;font-size:17px;"></span>
 
-<button id="logoutBtn" class="login-btn">
+<button
+id="logoutBtn"
+style="
+padding:10px 18px;
+background:#EF4444;
+color:white;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-weight:600;
+font-size:15px;
+">
 Logout
 </button>
 
