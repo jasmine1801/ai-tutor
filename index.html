@@ -339,14 +339,17 @@ Register
 </li>
 
 </ul>
-
-<div id="userInfo" style="display:none;align-items:center;gap:10px;">
+<div id="userInfo" style="display:none;align-items:center;gap:12px;">
 
 <img id="userPhoto"
 style="width:45px;height:45px;border-radius:50%;border:2px solid #6366F1;">
 
 <span id="userName"
 style="font-weight:600;font-size:17px;"></span>
+
+<button id="logoutBtn" class="login-btn">
+Logout
+</button>
 
 </div>
 
@@ -498,7 +501,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebas
 
 import {
 getAuth,
-onAuthStateChanged
+onAuthStateChanged,
+signOut
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -524,6 +528,22 @@ document.getElementById("userName").innerText=user.displayName;
 document.getElementById("userPhoto").src=user.photoURL;
 
 document.getElementById("navMenu").style.display="none";
+
+}
+
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+
+try{
+
+await signOut(auth);
+
+window.location.href="login.html";
+
+}catch(error){
+
+alert(error.message);
 
 }
 
